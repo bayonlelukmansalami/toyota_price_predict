@@ -27,6 +27,7 @@ from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import GridSearchCV
 import joblib
+import pickle
 loaded_model = joblib.load('models-toyota-price.pkl')
 
 
