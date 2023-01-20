@@ -30,6 +30,9 @@ from sklearn.model_selection import GridSearchCV
 
 # import data file csv
 data = pd.read_csv('toyota.csv')
+df = data.copy()
+df = pd.get_dummies(df, columns=["model", "transmission","fuelType"], drop_first=False)
+
 # set page title
 st.set_page_config('Toyota Price Prediction App')
 
@@ -93,11 +96,6 @@ if menu == 'Predict Price':
 
     fuel_choice = st.selectbox(label='Select the Fuel type', options=fuel_list)
     fuels = fuel_dic[fuel_choice]
-
-    data = pd.read_csv('toyota.csv')
-    df = data.copy()
-
-    df = pd.get_dummies(df, columns=["model", "transmission","fuelType"], drop_first=False)
 
     X = df.drop('price', axis=1)
     y = df.price
