@@ -112,9 +112,11 @@ if menu == 'Predict Price':
 
     xgb.fit(X_train, y_train)
     rf.fit(X_train, y_train)
+    pred_xgb = xgb.predict(X_test)
+    pred_rf = rf.predict(X_test)
 
-    xgb_score = xgb.score(X_test, y_test)
-    rf_score = rf.score(X_test, y_test)
+    xgb_score = r2_score(y_test,pred_xgb)
+    rf_score = r2_score(y_test,pred_rf)
     column_data = X.columns.values
 
 
