@@ -86,11 +86,11 @@ fuel_choice = st.selectbox(label='Select the Fuel type', options=fuel_list)
 fuels = fuel_dic[fuel_choice]
     
     
-def predict_rating(model, df):
+def predict_price(model, df):
     predictions_data = predict_model(estimator = model, data = df)
     return predictions_data['Label'][0]
     
-loaded_model = joblib.load('models-toyota-price.pkl')
+model = joblib.load('models-toyota-price.pkl')
 
 
 st.title('Toyota Used Car Price Prediction Web App')
@@ -112,5 +112,5 @@ st.table(features_df)
 
 
 if st.button('Predict'):
-    prediction = loaded_model.predict(features_df)
+    prediction = predict_price(model,features_df)
     st.write('Based on feature selected, the car price is GBP'+ str(int(prediction)))
