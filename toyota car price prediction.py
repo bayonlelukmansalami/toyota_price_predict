@@ -27,25 +27,14 @@ from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import GridSearchCV
 import joblib
-# import data file csv
+loaded_model = joblib.load('models-toyota-price.pkl')
 
-social_acc = ['Kaggle', 'Medium', 'LinkedIn']
-social_acc_nav = st.sidebar.selectbox('options',social_acc)
 
-if social_acc_nav == 'Kaggle':
-    st.sidebar.image('kaggle.jpg')
-    st.sidebar.markdown("[Kaggle](https://www.kaggle.com/bayonlesalami)")
-
-elif social_acc_nav == 'Medium':
-    st.sidebar.image('medium.jpg')
-    st.sidebar.markdown("[Click to read my blogs](https://medium.com/@bayonlelukmansalami/)")
-
-elif social_acc_nav == 'LinkedIn':
-    st.sidebar.image('linkedin.jpg')
-    st.sidebar.markdown("[Visit LinkedIn account](https://www.linkedin.com/in/salamibayonlelukman/)")
-
-menu_list = ["Predict Price"]
-menu = st.radio("Menu", menu_list)
+st.title('Toyota Used Car Price Prediction Web App')
+st.write('This is a web app to predict the toyota used car price in pounds based on\
+        several features that you can see in the sidebar. Please adjust the\
+        value of each feature. After that, click on the Predict button at the bottom to\
+        see the prediction of the regressor.')
 
 
 model_dic = {'model_ Auris': 0, 'model_ Avensis': 1, 'model_ Aygo': 2, 'model_ C-HR': 3, 'model_ Camry': 4, 'model_ Corolla': 5, 'model_ GT86': 6,
@@ -84,20 +73,8 @@ transmissions = transmission_dic[transmission_choice]
 
 fuel_choice = st.selectbox(label='Select the Fuel type', options=fuel_list)
 fuels = fuel_dic[fuel_choice]
-    
-    
-def predict_price(model, df):
-    predictions_data = predict_model(estimator = model, data = df)
-    return predictions_data['Label'][0]
-    
-model = joblib.load('models-toyota-price.pkl')
 
 
-st.title('Toyota Used Car Price Prediction Web App')
-st.write('This is a web app to predict the toyota used car price in pounds based on\
-        several features that you can see in the sidebar. Please adjust the\
-        value of each feature. After that, click on the Predict button at the bottom to\
-        see the prediction of the regressor.')
 
 features = {
   'toyota_model':model_list,
@@ -112,5 +89,5 @@ st.table(features_df)
 
 
 if st.button('Predict'):
-    prediction = predict_price(model,features_df)
-    st.write('Based on feature selected, the car price is GBP'+ str(int(prediction)))
+    prediction = loaded_model.predict(features_df)
+    st.write('Toyota Used Price Prediction is GBP {:.0f}'.format(np.round(result[0])))
