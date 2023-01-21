@@ -121,11 +121,12 @@ fuelType_Petrol = st.sidebar.slider(label ='fuelType_Petrol', min_value = 0,
 
 engineSize = st.number_input('Enter Engine Size  (range = 0 - 7)')
 
-mileage = st.number_input('Enter Engine Size  (range = 0 - 100000)')
+mileage = st.number_input('mileage  (range = 0 - 100000)')
 
-mpg = st.number_input('Enter Engine Size  (range = 0 - 100000)')
+mpg = st.number_input('mpg  (range = 0 - 100000)')
 
-tax = st.number_input('Enter Engine Size  (range = 0 - 1000)')
+tax = st.number_input('tax  (range = 0 - 1000)')
+
 
 
 
