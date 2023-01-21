@@ -10,6 +10,28 @@ import numpy as np
 import joblib
 
 
+social_acc = ['About', 'Kaggle', 'Medium', 'LinkedIn']
+social_acc_nav = st.sidebar.selectbox('About', social_acc)
+if social_acc_nav == 'About':
+    st.sidebar.markdown("<h2 style='text-align: center;'> Salami Lukman Bayonle</h2> ", unsafe_allow_html=True)
+    st.sidebar.markdown('''---''')
+    st.sidebar.markdown('''
+    • Data Analytics/Scientist (Python/R/SQL/Tableau) \n 
+    • Maintenance Specialist (Nigerian National Petroleum Company Limited) \n 
+    • IBM/GOOGLE/DATACAMP Certified Data Analyst and Data Scientist''')
+    st.sidebar.markdown("[ Visit Github](https://github.com/bayonlelukmansalami)")
+
+elif social_acc_nav == 'Kaggle':
+    st.sidebar.image('kaggle.jpg')
+    st.sidebar.markdown("[Kaggle](https://www.kaggle.com/bayonlesalami)")
+
+elif social_acc_nav == 'Medium':
+    st.sidebar.image('medium.jpg')
+    st.sidebar.markdown("[Click to read my blogs](https://medium.com/@bayonlelukmansalami/)")
+
+elif social_acc_nav == 'LinkedIn':
+    st.sidebar.image('linkedin.jpg')
+    st.sidebar.markdown("[Visit LinkedIn account](https://www.linkedin.com/in/salamibayonlelukman/)")
 
 loaded_model = joblib.load('models-toyota-price.pkl')
 
