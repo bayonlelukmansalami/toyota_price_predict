@@ -142,7 +142,7 @@ st.table(features_np)
 
 
 if st.button('Predict'):
-    prediction = loaded_model.predict(features_df)
+    prediction = loaded_model.predict(features_np)
     st.write('Toyota Used Price Prediction is GBP {:.0f}'.format(np.round(result[0])))
 
 
