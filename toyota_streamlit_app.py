@@ -33,7 +33,7 @@ elif social_acc_nav == 'LinkedIn':
     st.sidebar.image('linkedin.jpg')
     st.sidebar.markdown("[Visit LinkedIn account](https://www.linkedin.com/in/salamibayonlelukman/)")
     
-@st.cache_data
+
 loaded_model = joblib.load('models-toyota-price.pkl')
 
 
