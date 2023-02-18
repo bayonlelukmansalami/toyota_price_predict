@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import joblib
 
-@st.cache_data
+
 social_acc = ['About', 'Kaggle', 'Medium', 'LinkedIn']
 social_acc_nav = st.sidebar.selectbox('About', social_acc)
 if social_acc_nav == 'About':
@@ -32,7 +32,8 @@ elif social_acc_nav == 'Medium':
 elif social_acc_nav == 'LinkedIn':
     st.sidebar.image('linkedin.jpg')
     st.sidebar.markdown("[Visit LinkedIn account](https://www.linkedin.com/in/salamibayonlelukman/)")
-
+    
+@st.cache_data
 loaded_model = joblib.load('models-toyota-price.pkl')
 
 
