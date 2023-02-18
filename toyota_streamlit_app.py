@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import joblib
 
-
+@st.cache_data
 social_acc = ['About', 'Kaggle', 'Medium', 'LinkedIn']
 social_acc_nav = st.sidebar.selectbox('About', social_acc)
 if social_acc_nav == 'About':
